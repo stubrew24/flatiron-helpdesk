@@ -1,0 +1,42 @@
+<% @page_title = "Show Page" %>
+<div class="row">
+
+  <div class="col">
+  </div>
+
+  <div class="col-8">
+<%= link_to("Back to List", pages_path, :class => 'back-link') %>
+
+
+  <h2 style="margin-bottom: 30px;">Show Page</h2>
+
+  <table summary="Page detail view"  class="table table-borderless">
+    <tbody>
+    <tr>
+      <th>Name</th>
+      <td><%= @page.name %></td>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <td><%= @page.position %></td>
+    </tr>
+    <tr>
+      <th>Subject</th>
+      <td><%= @page.subject ? @page.subject.name : @page.subject_id %></td>
+    </tr>
+    <tr>
+      <th>Visible?</th>
+      <td><%= @page.visible ? 'true' : 'false' %></td>
+    </tr>
+    <tr>
+      <th>Permalink</th>
+      <td><%= @page.permalink %></td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+  
+  <div class="col">
+  </div>
+
+</div>

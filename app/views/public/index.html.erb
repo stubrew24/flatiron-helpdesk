@@ -1,0 +1,11 @@
+<div class="jumbotron flatironBlue">
+  <h1 class="display-4"><strong>//</strong> Flatiron Helpdesk</h1>
+</div>
+
+
+  <% @subjects.each do |subject| %>
+    <% if subject.visible %>
+      <h2><%= link_to(subject.name, subject.slug) %></h2>
+    <% end %>
+  <% end %>
+

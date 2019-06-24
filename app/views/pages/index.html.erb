@@ -1,0 +1,39 @@
+<% @page_title = "All Pages" %>
+
+<div class="pages index">
+  <h2 style="margin-bottom: 30px;">Pages</h2>
+
+  <p>
+    <%= image_tag('plus_sign.png', :size => '11x11', :alt => '+') %>
+    <%= link_to("Add New Page", new_page_path, :class => 'action new') %>
+  </p>
+
+  <table class="table" summary="Sections list">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Page</th>
+        <th scope="col">Visible</th>
+        <th scope="col">Permalink</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @pages.each do |page| %>
+    <tr>
+      <td><%= page.position %></td>
+      <td><%= page.subject ? page.subject.name : page.subject_id %></td>
+      <td><%= page.name %></td>
+      <td class="center"><%= status_tag(page.visible) %></td>
+      <td class="center"><%= page.permalink %></td>
+      <td class="actions">
+        <%= link_to("Show", page_path(page), :class => 'action show') %>
+        <%= link_to("Edit", edit_page_path(page), :class => 'action edit') %>
+        <%= link_to("Delete", delete_page_path(page), :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

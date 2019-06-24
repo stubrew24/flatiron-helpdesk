@@ -1,0 +1,46 @@
+<% @page_title = @subject.name %>
+
+<div class="jumbotron flatironBlue">
+  <h1 class="display-4"><strong>//</strong> <%= @subject.name %></h1>
+</div>
+
+<h2>Contents</h2><br />
+<% @pages.each do |page| %>
+    <% if page.visible && page.sections.length > 0 %>
+        <h4><%= page.name %></h4>
+        <ul class="nav flex-column">
+            <% page.sections.sorted.each do |section| %>
+                <% if section.visible %>
+                    <li class="nav-item"><%= link_to(section.name, "##{section.slug}") %></li>
+                <% end %>
+            <% end %>
+        </ul>
+        <br />
+    <% end %>
+<% end %>
+
+<br />
+<br />
+<br />
+<br />
+
+<% @pages.each do |page| %>
+    <% if page.visible && page.sections.length > 0 %>
+        <h2><%= page.name %></h2>
+        <br />
+        <ul class="nav flex-column">
+            <% page.sections.sorted.each do |section| %>
+                <li class="nav-item"  id="<%= section.slug %>">
+                    <% if section.visible %>
+                        <h4><%= section.name %></h4>
+                        <p><%= raw section.content %></p>
+                        <br />
+                        <br />
+                    <% end %>
+                </li>
+            <% end %>
+        </ul>
+        <br />
+        <br />
+    <% end %>
+<% end %>

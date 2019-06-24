@@ -1,0 +1,22 @@
+<% @page_title = "Update Page" %>
+
+<div class="row">
+
+  <div class="col">
+  </div>
+
+  <div class="col-6">
+
+    <%= link_to("Back to List", pages_path, :class => 'back-link') %><br /><br />
+
+    <h2>Update Page</h2>
+
+        <%= form_for @page, class: "form-group" do |f| %>
+          <%= render(:partial => 'form', :locals => {:f => f}) %>
+          <%= f.submit "Update Page", class: "btn btn-primary" %>
+        <% end %>
+  </div>
+
+  <div class="col">
+  </div>
+</div>

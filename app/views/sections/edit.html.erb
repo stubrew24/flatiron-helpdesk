@@ -1,0 +1,76 @@
+<div class="row">
+
+  <div class="col">
+  </div>
+
+  <div class="col-6">
+
+    <%= link_to("Back to List", sections_path, :class => 'back-link') %><br /><br />
+
+    <h2>Update Section</h2>
+
+        <%= form_for @section, class: "form-group" do |f| %>
+          <%= render(:partial => 'form', :locals => {:f => f}) %>
+          <%= f.submit "Update Section", class: "btn btn-primary" %>
+        <% end %>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<script>
+  (
+    function() {
+
+    addEventListener("trix-attachment-add", function(event) {
+      if (event.attachment.file) {
+        uploadFileAttachment(event.attachment)
+      }
+    })
+
+    function uploadFileAttachment(attachment) {
+      uploadFile(attachment.file, setProgress, setAttributes)
+  
+      function setProgress(progress) {
+        attachment.setUploadProgress(progress)
+        console.log(attachment)
+      }
+  
+      function setAttributes(attributes) {
+        attachment.setAttributes(attributes)
+        console.log(attachment)
+      }
+    }
+
+    function uploadFile(file, progressCallback, successCallback) {
+      var url = `https://api.cloudinary.com/v1_1/dm7moiolo/image/upload`;
+      var xhr = new XMLHttpRequest();
+      var fd = new FormData();
+      xhr.open('POST', url, true);
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+      xhr.upload.addEventListener("progress", function(event) {
+        var progress = event.loaded / event.total * 100
+        progressCallback(progress)
+      })
+
+      xhr.onreadystatechange = function(e) {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var response = JSON.parse(xhr.responseText);
+          var url = response.secure_url;
+          var attributes = {
+            url: url
+          }
+          successCallback(attributes)
+      
+        }
+      }
+    
+
+    
+      fd.append('upload_preset', 'y2h7uhsy');
+      fd.append('file', file);
+      xhr.send(fd);
+    }
+
+})();
+</script>

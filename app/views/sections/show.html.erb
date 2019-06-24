@@ -1,0 +1,44 @@
+<div class="row">
+
+  <div class="col">
+  </div>
+
+  <div class="col-8">
+  <%= link_to("Back to List", sections_path, :class => 'back-link') %>
+
+    <h2 style="margin-bottom: 30px;">Show Section</h2>
+
+    <table summary="Section detail view"  class="table table-borderless">
+      <tbody>
+      <tr>
+        <th>Name</th>
+        <td><%= @section.name %></td>
+      </tr>
+      <tr>
+        <th>Page</th>
+        <td><%= @section.page ? @section.page.name : @section.page_id %></td>
+      </tr>
+      <tr>
+        <th>Position</th>
+        <td><%= @section.position %></td>
+      </tr>
+      <tr>
+        <th>Visible?</th>
+        <td><%= @section.visible ? 'true' : 'false' %></td>
+      </tr>
+      <tr>
+        <th>Content</th>
+        <td><%= raw @section.content %></td>
+      </tr>
+      <tr>
+        <th>Last Updated</th>
+        <td><%= @section.updated_at %></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="col">
+  </div>
+
+</div>

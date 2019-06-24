@@ -1,0 +1,35 @@
+<div class="sections index">
+  <h2 style="margin-bottom: 30px;">Sections</h2>
+
+  <p>
+    <%= image_tag('plus_sign.png', :size => '11x11', :alt => '+') %>
+    <%= link_to("Add New Section", new_section_path, :class => 'action new') %>
+  </p>
+
+  <table class="table" summary="Sections list">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Page</th>
+        <th scope="col">Section</th>
+        <th scope="col">Visible</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @sections.each do |section| %>
+    <tr>
+      <td><%= section.position %></td>
+      <td><%= section.page ? section.page.name : section.page_id %></td>
+      <td><%= section.name %></td>
+      <td class="center"><%= status_tag(section.visible) %></td>
+      <td class="actions">
+        <%= link_to("Show", section_path(section), :class => 'action show') %>
+        <%= link_to("Edit", edit_section_path(section), :class => 'action edit') %>
+        <%= link_to("Delete", delete_section_path(section), :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
