@@ -1,11 +1,12 @@
-<% @page_title = "Show Subject" %>
+<% @page_title = @subject.name %>
+
 <div class="row">
 
   <div class="col">
   </div>
 
   <div class="col-8">
-<%= link_to("Back to List", subjects_path, :class => 'back-link') %>
+<%= link_to("Back to Subjects", subjects_path, :class => 'back-link') %><br /><br />
 
   <h2 style="margin-bottom: 30px;">Show Subject</h2>
 

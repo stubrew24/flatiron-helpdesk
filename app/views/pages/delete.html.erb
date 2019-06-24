@@ -1,22 +1,31 @@
 <% @page_title = "Delete Page" %>
 
-<%= link_to("<< Back to List", pages_path, :class => 'back-link') %>
+<div class="row">
 
-<div class="pages delete">
-  <h2>Delete Page</h2>
+  <div class="col">
+  </div>
 
-  <%= form_for(@page, :method => 'delete') do |f| %>
+  <div class="col-8">
+    <%= link_to("Back to Pages", pages_path, :class => 'back-link') %><br /><br />
 
-    <p>
-      <div class="alert alert-danger" role="alert">
-        <h4>Are you sure you want to permanently delete '<%= f.object.name %>'?</h4>
-        <p>This will result in all child Sections being hidden</p>
-      </div>
-    </p>
+      <h2>Delete Page</h2>
 
-    <div class="form-buttons">
-      <%= f.submit "Delete Page", class: "btn btn-danger"  %>
-    </div>
+      <%= form_for(@page, :method => 'delete') do |f| %>
 
-  <% end %>
+        <p>
+          <div class="alert alert-danger" role="alert">
+            <h4>Are you sure you want to permanently delete '<%= f.object.name %>'?</h4>
+            <p>This will result in all child Sections being hidden</p>
+          </div>
+        </p>
+
+        <div class="form-buttons">
+          <%= f.submit "Delete Page", class: "btn btn-danger"  %>
+        </div>
+
+      <% end %>
+        </div>
+
+  <div class="col">
+  </div>
 </div>

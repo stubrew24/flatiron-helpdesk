@@ -15,6 +15,7 @@ class Section < ApplicationRecord
     validates_presence_of :name
     validates_length_of :name, :maximum => 255
     validates_presence_of :content
+    validates :name, uniqueness: true
 
     def slug
       self.name.gsub(/[^0-9a-z ]/i, '').split(" ").join("_").downcase
